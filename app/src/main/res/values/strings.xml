@@ -14,6 +14,7 @@
     <string name="choose_knight_position">1. Select Starting Point of Knight on Board</string>
     <string name="choose_destination_position">2. Select Destination of Knight on Board</string>
     <string name="result_display_description">3. Possible Paths will appear</string>
+    <string name="press_reset">4. Press Reset to Start Over</string>
     <string name="computing_paths">Computing Paths…</string>
     <string name="no_paths">No valid paths found.</string>
     <string name="path_display">Path %1$d: %2$s</string>

@@ -41,5 +41,11 @@ fun Instructions(
             modifier = Modifier
                 .padding(vertical = 4.dp)
         )
+        Text(
+            text = stringResource(R.string.press_reset),
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier
+                .padding(vertical = 4.dp)
+        )
     }
 }

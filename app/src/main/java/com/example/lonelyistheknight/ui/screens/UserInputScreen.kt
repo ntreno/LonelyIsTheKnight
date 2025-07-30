@@ -55,6 +55,7 @@ fun UserInputScreen(
                     Constants.MAX_MOVES_LOWER_LIMIT,
                     Constants.MAX_MOVES_HIGHER_LIMIT
                 ),
+                style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(16.dp)
