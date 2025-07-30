@@ -5,6 +5,8 @@ _Using modern Jetpack Compose, MVVM, and a splash of animated logic!_
 
 ---
 
+- Built on Android Studio Ladybug Feature Drop | 2024.2.2 Patch 1
+- JBR 21.0.5
 - Gradle Version: 8.10.2
 - AGP: 8.8.1
 
@@ -53,7 +55,7 @@ _Using modern Jetpack Compose, MVVM, and a splash of animated logic!_
         - SharedPrefsManager.kt
 - navigation
     - ChessNavGraph.kt
-    -Route.kt
+    - Route.kt
 - ui
     - components         # Reusable UI pieces (e.g. buttons, grids)
     - screens            # SelectSizeScreen, ChessBoardScreen
