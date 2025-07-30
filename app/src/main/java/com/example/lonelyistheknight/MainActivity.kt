@@ -1,0 +1,18 @@
+package com.example.lonelyistheknight
+
+import android.os.Bundle
+import androidx.activity.*
+import androidx.activity.compose.setContent
+import com.example.lonelyistheknight.ui.theme.LonelyIsTheKnightTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            LonelyIsTheKnightTheme {
+                ChessApp()
+            }
+        }
+    }
+}

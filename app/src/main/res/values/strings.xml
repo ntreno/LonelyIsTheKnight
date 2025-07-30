@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lonely Is The Knight</string>
+    <string name="board">Game</string>
+    <string name="back_button">Back</string>
+    <string name="please_enter">Please enter board size (%1$d to %2$d) and max solution moves (%3$d to %4$d)</string>
+    <string name="board_size">Board Size</string>
+    <string name="max_moves">Max Moves</string>
+    <string name="start">Start</string>
+    <string name="show_last_solution">Show Last Solution</string>
+    <string name="last_solution_title">Last Saved Solution</string>
+    <string name="no_saved_solution">No solution saved</string>
+    <string name="close">Close</string>
+    <string name="instructions_title">Instructions</string>
+    <string name="choose_knight_position">1. Select Starting Point of Knight on Board</string>
+    <string name="choose_destination_position">2. Select Destination of Knight on Board</string>
+    <string name="result_display_description">3. Possible Paths will appear</string>
+    <string name="computing_paths">Computing Paths…</string>
+    <string name="no_paths">No valid paths found.</string>
+    <string name="path_display">Path %1$d: %2$s</string>
+    <string name="reset">Reset</string>
+</resources>
