@@ -46,32 +46,32 @@ _Using modern Jetpack Compose, MVVM, and a splash of animated logic!_
 ## 🧭 Project Structure
 
 📁 com.example.lonelyistheknight
-├── data
-│   ├── model
-│   │   └── Position.kt
-│   └── sharedPref
-│       └── SharedPrefsManager.kt
-├── navigation
-│   ├── ChessNavGraph.kt
-│   └── Route.kt
-├── ui
-│   ├── components         # Reusable UI pieces (e.g. buttons, grids)
-│   ├── screens            # SelectSizeScreen, ChessBoardScreen
-│   └── theme              # MaterialTheme, colors, typography
-├── util
-│   ├── BoardGenerator.kt
-│   ├── Constants.kt
-│   ├── Extensions.kt
-│   └── PathFinder.kt
-├── viewmodel
-│   ├── TileStateViewModel.kt
-│   └── TileStateViewModelFactory.kt
-├── ChessApp.kt
-├── MainActivity.kt
-└── res
-    ├── drawable/          # Backgrounds
-    ├── font/              # Project Fonts
-    ├── mipmap/            # Launcher icon
-    └── values/            # Strings, colors, themes
+- data
+    - model
+        - Position.kt
+    - sharedPref
+        - SharedPrefsManager.kt
+- navigation
+    - ChessNavGraph.kt
+    -Route.kt
+- ui
+    - components         # Reusable UI pieces (e.g. buttons, grids)
+    - screens            # SelectSizeScreen, ChessBoardScreen
+    - theme              # MaterialTheme, colors, typography
+- util
+    - BoardGenerator.kt
+    - Constants.kt
+    - Extensions.kt
+    - PathFinder.kt
+- viewmodel
+    - TileStateViewModel.kt
+    - TileStateViewModelFactory.kt
+- ChessApp.kt
+- MainActivity.kt
+- res
+    - drawable/          # Backgrounds
+    - font/              # Project Fonts
+    - mipmap/            # Launcher icon
+    - values/            # Strings, colors, themes
 
 _Note: Documentation was drafted and refined with AI assistance for clarity and structure_
