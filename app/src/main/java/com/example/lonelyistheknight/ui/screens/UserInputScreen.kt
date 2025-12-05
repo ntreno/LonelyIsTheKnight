@@ -30,7 +30,7 @@ fun UserInputScreen(
     var maxMovesInput by rememberSaveable { mutableStateOf("") }
     var error by rememberSaveable { mutableStateOf(false) }
 
-    var showDialog by remember { mutableStateOf(false) }
+    var showDialog by rememberSaveable { mutableStateOf(false) }
     val lastSolutionPaths = sharedPrefs.getSavedSolution()
     val lastsize = sharedPrefs.getSolutionBoardSize()
 
