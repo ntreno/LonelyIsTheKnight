@@ -1,14 +1,18 @@
 package com.example.lonelyistheknight.ui.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.lonelyistheknight.R
 import com.example.lonelyistheknight.data.model.Position
-import com.example.lonelyistheknight.util.*
+import com.example.lonelyistheknight.util.Constants
+import com.example.lonelyistheknight.util.toChessNotation
 
 @Composable
 fun PathResultsColumn(
@@ -44,9 +48,9 @@ fun PathResultsColumn(
                             text = stringResource(
                                 R.string.path_display,
                                 index + 1,
-                                path.joinToString(Constants.Symbols.SEPARATOR) { it.toChessNotation(
-                                    size
-                                ) }
+                                path.joinToString(Constants.Symbols.SEPARATOR) {
+                                    it.toChessNotation(size)
+                                }
                             ),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.secondary

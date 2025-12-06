@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.klint)
 }
 
 android {
@@ -59,4 +61,24 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+tasks.register("ciChecks") {
+    group = "verification"
+
+    // Android lint
+    dependsOn("lint")
+
+    // Kotlin/Java unit tests
+    dependsOn("testDebugUnitTest")
+
+    // Detekt static analysis
+    dependsOn("detekt")
+
+    // Ktlint formatting / style checks
+    dependsOn("ktlintCheck")
+
+    doLast {
+        println("✔ All CI checks completed successfully.")
+    }
 }

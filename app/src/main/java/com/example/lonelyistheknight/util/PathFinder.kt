@@ -32,7 +32,6 @@ fun findAllKnightPaths(
     val results = mutableListOf<List<Position>>()
 
     fun dfs(current: Position, path: MutableList<Position>, visited: MutableSet<Position>) {
-
         if (path.size > maxDepth + 1) return
 
         if (current == end) {
@@ -55,4 +54,3 @@ fun findAllKnightPaths(
     Log.d(TAG, "Found ${results.size} solutions")
     return results
 }
-

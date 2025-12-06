@@ -1,12 +1,25 @@
 package com.example.lonelyistheknight.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.*
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -16,7 +29,9 @@ import androidx.navigation.NavController
 import com.example.lonelyistheknight.R
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
 import com.example.lonelyistheknight.navigation.Route
-import com.example.lonelyistheknight.ui.components.*
+import com.example.lonelyistheknight.ui.components.LastSolutionsFAB
+import com.example.lonelyistheknight.ui.components.ResultsAlertDialog
+import com.example.lonelyistheknight.ui.components.StartButton
 import com.example.lonelyistheknight.util.Constants
 
 @Composable
@@ -94,7 +109,9 @@ fun UserInputScreen(
             StartButton(onClick = {
                 val size = sizeInput.toIntOrNull()
                 val moves = maxMovesInput.toIntOrNull()
-                if (size in Constants.MIN_BOARD_SIZE..Constants.MAX_BOARD_SIZE && moves in Constants.MAX_MOVES_LOWER_LIMIT..Constants.MAX_MOVES_HIGHER_LIMIT) {
+                if (size in Constants.MIN_BOARD_SIZE..Constants.MAX_BOARD_SIZE &&
+                    moves in Constants.MAX_MOVES_LOWER_LIMIT..Constants.MAX_MOVES_HIGHER_LIMIT
+                ) {
                     navController.navigate("${Route.Board}/$size/$moves")
                 } else {
                     error = true
