@@ -3,7 +3,6 @@ package com.example.lonelyistheknight.ui.screens
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,8 +31,7 @@ import com.example.lonelyistheknight.viewmodel.TileStateViewModelFactory
 @Composable
 fun ChessBoardScreen(
     size: Int,
-    maxMoves: Int,
-    paddingValues: PaddingValues
+    maxMoves: Int
 ) {
     val context = LocalContext.current
     val sharedPrefs = remember { SharedPrefsManager(context) }
@@ -66,8 +64,7 @@ fun ChessBoardScreen(
                 knight = knight,
                 destination = destination,
                 currentPosition = current,
-                viewModel = viewModel,
-                paddingValues = paddingValues
+                viewModel = viewModel
             )
             Spacer(modifier = Modifier.weight(1f))
             Column(
@@ -103,8 +100,7 @@ fun ChessBoardScreen(
                 knight = knight,
                 destination = destination,
                 currentPosition = current,
-                viewModel = viewModel,
-                paddingValues = paddingValues
+                viewModel = viewModel
             )
             Spacer(modifier = Modifier.weight(1f))
             PathResultsColumn(
@@ -128,8 +124,7 @@ fun ChessBoardScreen(
 fun ChessBoardScreenPreview() {
     ChessBoardScreen(
         Constants.DEFAULT_BOARD_SIZE,
-        Constants.DEFAULT_MAX_MOVES,
-        PaddingValues(16.dp)
+        Constants.DEFAULT_MAX_MOVES
     )
 }
 
@@ -141,7 +136,6 @@ fun ChessBoardScreenPreview() {
 fun ChessBoardScreenLandscapePreview() {
     ChessBoardScreen(
         Constants.DEFAULT_BOARD_SIZE,
-        Constants.DEFAULT_MAX_MOVES,
-        PaddingValues(16.dp)
+        Constants.DEFAULT_MAX_MOVES
     )
 }

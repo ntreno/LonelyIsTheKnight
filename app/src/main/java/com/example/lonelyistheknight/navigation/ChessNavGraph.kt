@@ -1,7 +1,5 @@
 package com.example.lonelyistheknight.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -14,13 +12,12 @@ import com.example.lonelyistheknight.util.Constants
 @Composable
 fun ChessNavGraph(
     navController: NavHostController,
-    contentPaddingValues: PaddingValues
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = Route.Start.name,
-        modifier = Modifier
-            .padding(contentPaddingValues)
+        modifier = modifier
     ) {
         composable(route = Route.Start.name) {
             UserInputScreen(navController = navController)
@@ -33,8 +30,7 @@ fun ChessNavGraph(
                 ?: Constants.DEFAULT_MAX_MOVES
             ChessBoardScreen(
                 size = size,
-                maxMoves = moves,
-                paddingValues = contentPaddingValues
+                maxMoves = moves
             )
         }
     }
