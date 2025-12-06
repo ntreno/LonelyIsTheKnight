@@ -1,17 +1,33 @@
 package com.example.lonelyistheknight.ui.screens
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.*
-import androidx.compose.ui.platform.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
-import com.example.lonelyistheknight.ui.components.*
+import com.example.lonelyistheknight.ui.components.ChessGrid
+import com.example.lonelyistheknight.ui.components.Instructions
+import com.example.lonelyistheknight.ui.components.PathResultsColumn
+import com.example.lonelyistheknight.ui.components.ResetButton
 import com.example.lonelyistheknight.util.Constants
-import com.example.lonelyistheknight.viewmodel.*
+import com.example.lonelyistheknight.viewmodel.TileStateViewModel
+import com.example.lonelyistheknight.viewmodel.TileStateViewModelFactory
 
 @Composable
 fun ChessBoardScreen(
@@ -27,7 +43,7 @@ fun ChessBoardScreen(
 
     val knight by viewModel.knightPosition.collectAsState()
     val destination by viewModel.destination.collectAsState()
-    val current by viewModel.currentAnimatedPosition.collectAsState() //this symbolizes intermediate positions to solution path
+    val current by viewModel.currentAnimatedPosition.collectAsState() // intermediate positions to solution path
     val paths by viewModel.paths.collectAsState()
     val isComputing by viewModel.isComputing.collectAsState()
 
@@ -54,7 +70,7 @@ fun ChessBoardScreen(
                 paddingValues = paddingValues
             )
             Spacer(modifier = Modifier.weight(1f))
-            Column (
+            Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 PathResultsColumn(
@@ -109,7 +125,7 @@ fun ChessBoardScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun ChessBoardScreenPreview(){
+fun ChessBoardScreenPreview() {
     ChessBoardScreen(
         Constants.DEFAULT_BOARD_SIZE,
         Constants.DEFAULT_MAX_MOVES,
@@ -117,9 +133,12 @@ fun ChessBoardScreenPreview(){
     )
 }
 
-@Preview(showBackground = true, widthDp = 800, heightDp = 300)
+@Preview(
+    showBackground = true,
+    device = "spec:width=411dp,height=891dp,dpi=420,isRound=false,chinSize=0dp,orientation=landscape"
+)
 @Composable
-fun ChessBoardScreenLandscapePreview(){
+fun ChessBoardScreenLandscapePreview() {
     ChessBoardScreen(
         Constants.DEFAULT_BOARD_SIZE,
         Constants.DEFAULT_MAX_MOVES,

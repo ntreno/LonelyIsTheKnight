@@ -1,6 +1,7 @@
 package com.example.lonelyistheknight.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
 
 class TileStateViewModelFactory(

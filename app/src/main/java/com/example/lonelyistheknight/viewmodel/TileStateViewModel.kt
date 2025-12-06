@@ -1,11 +1,21 @@
 package com.example.lonelyistheknight.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
-import com.example.lonelyistheknight.util.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import com.example.lonelyistheknight.util.Constants
+import com.example.lonelyistheknight.util.findAllKnightPaths
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TileStateViewModel(private val sharedPrefs: SharedPrefsManager) : ViewModel() {
     private val _isComputing = MutableStateFlow(false)
@@ -79,7 +89,7 @@ class TileStateViewModel(private val sharedPrefs: SharedPrefsManager) : ViewMode
             while (_isAnimating.value) {
                 for (path in _paths.value) {
                     for (pos in path) {
-                        ensureActive() //ensures active animation (reset not pressed)
+                        ensureActive() // ensures active animation (reset not pressed)
                         _currentAnimatedPosition.value = pos
                         delay(Constants.ANIMATION_DELAY_MS)
                     }
@@ -103,7 +113,7 @@ class TileStateViewModel(private val sharedPrefs: SharedPrefsManager) : ViewMode
 
     fun reset() {
         viewModelScope.launch {
-            animationJob?.cancelAndJoin() //finishes animation before resetting
+            animationJob?.cancelAndJoin() // finishes animation before resetting
             _isAnimating.value = false
             _knightPosition.value = null
             _destination.value = null

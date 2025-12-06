@@ -1,9 +1,12 @@
 package com.example.lonelyistheknight
 
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
-import androidx.navigation.compose.*
-import com.example.lonelyistheknight.navigation.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.lonelyistheknight.navigation.ChessNavGraph
+import com.example.lonelyistheknight.navigation.Route
 import com.example.lonelyistheknight.ui.components.ChessAppBar
 
 @Composable
@@ -19,7 +22,7 @@ fun ChessApp() {
     }
 
     Scaffold(
-        topBar =  {
+        topBar = {
             ChessAppBar(
                 currentScreen = currentScreen,
                 canNavigateBack = navController.previousBackStackEntry != null,
