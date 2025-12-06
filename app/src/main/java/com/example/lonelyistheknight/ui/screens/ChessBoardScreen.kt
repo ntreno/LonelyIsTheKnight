@@ -11,33 +11,26 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.ui.components.ChessGrid
 import com.example.lonelyistheknight.ui.components.Instructions
 import com.example.lonelyistheknight.ui.components.PathResultsColumn
 import com.example.lonelyistheknight.ui.components.ResetButton
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.viewmodel.TileStateViewModel
-import com.example.lonelyistheknight.viewmodel.TileStateViewModelFactory
 
 @Composable
 fun ChessBoardScreen(
     size: Int,
     maxMoves: Int
 ) {
-    val context = LocalContext.current
-    val sharedPrefs = remember { SharedPrefsManager(context) }
-    val viewModel: TileStateViewModel = viewModel(
-        factory = TileStateViewModelFactory(sharedPrefs)
-    )
+    val viewModel: TileStateViewModel = hiltViewModel()
 
     val knight by viewModel.knightPosition.collectAsState()
     val destination by viewModel.destination.collectAsState()
@@ -64,7 +57,9 @@ fun ChessBoardScreen(
                 knight = knight,
                 destination = destination,
                 currentPosition = current,
-                viewModel = viewModel
+                onClick = { tile: Position, boardSize: Int, maxMoves: Int ->
+                    viewModel.onTileClicked(tile, boardSize, maxMoves)
+                }
             )
             Spacer(modifier = Modifier.weight(1f))
             Column(
@@ -100,7 +95,9 @@ fun ChessBoardScreen(
                 knight = knight,
                 destination = destination,
                 currentPosition = current,
-                viewModel = viewModel
+                onClick = { tile: Position, boardSize: Int, maxMoves: Int ->
+                    viewModel.onTileClicked(tile, boardSize, maxMoves)
+                }
             )
             Spacer(modifier = Modifier.weight(1f))
             PathResultsColumn(
