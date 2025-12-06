@@ -22,7 +22,6 @@ import com.example.lonelyistheknight.R
 import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.util.createBoard
-import com.example.lonelyistheknight.viewmodel.TileStateViewModel
 
 @Composable
 fun ChessGrid(
@@ -31,7 +30,7 @@ fun ChessGrid(
     knight: Position?,
     destination: Position?,
     currentPosition: Position?,
-    viewModel: TileStateViewModel
+    onClick: (Position, Int, Int) -> Unit
 ) {
     BoxWithConstraints(
         modifier = Modifier
@@ -104,14 +103,9 @@ fun ChessGrid(
                                             }
                                         )
                                         .clickable(
-                                            enabled = destination == null
-                                        ) {
-                                            viewModel.onTileClicked(
-                                                tile = position,
-                                                boardSize = boardSize,
-                                                maxMoves = maxMoves
-                                            )
-                                        },
+                                            enabled = destination == null,
+                                            onClick = { onClick(position, boardSize, maxMoves) }
+                                        ),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     if (isKnight) {

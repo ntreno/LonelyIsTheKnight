@@ -6,6 +6,7 @@ import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.util.findAllKnightPaths
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -16,8 +17,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TileStateViewModel(private val sharedPrefs: SharedPrefsManager) : ViewModel() {
+@HiltViewModel
+class TileStateViewModel @Inject constructor(
+    private val sharedPrefs: SharedPrefsManager
+) : ViewModel() {
     private val _isComputing = MutableStateFlow(false)
     val isComputing: StateFlow<Boolean> = _isComputing.asStateFlow()
 
