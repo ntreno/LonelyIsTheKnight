@@ -11,7 +11,7 @@ sealed class Graph(
     )
 
     object Settings : Graph(
-        route = "search_graph",
+        route = "settings_graph",
         startDestination = Screen.Settings.route
     )
 }

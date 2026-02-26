@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.lonelyistheknight.ui.components.SettingsScreen
 import com.example.lonelyistheknight.ui.screens.ChessBoardScreen
 import com.example.lonelyistheknight.ui.screens.UserInputScreen
 import com.example.lonelyistheknight.util.Constants
@@ -20,10 +21,10 @@ fun ChessNavGraph(
         startDestination = Graph.Home.route,
         modifier = modifier
     ) {
-        navigation (
-            route = Graph.Home.route,
-            startDestination = Graph.Home.startDestination
-        ){
+        navigation(
+            startDestination = Graph.Home.startDestination,
+            route = Graph.Home.route
+        ) {
             composable(route = Screen.Start.route) {
                 UserInputScreen(navController = navController)
             }
@@ -36,6 +37,16 @@ fun ChessNavGraph(
                 ChessBoardScreen(
                     size = size,
                     maxMoves = moves
+                )
+            }
+        }
+        navigation(
+            startDestination = Graph.Settings.startDestination,
+            route = Graph.Settings.route
+        ) {
+            composable(route = Screen.Settings.route) {
+                SettingsScreen(
+                    navController = navController
                 )
             }
         }
