@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.lonelyistheknight.R
 import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
-import com.example.lonelyistheknight.navigation.Route
+import com.example.lonelyistheknight.navigation.Screen
 import com.example.lonelyistheknight.ui.components.LastSolutionsFAB
 import com.example.lonelyistheknight.ui.components.ResultsAlertDialog
 import com.example.lonelyistheknight.ui.components.StartButton
@@ -112,7 +112,7 @@ fun UserInputScreen(
                 if (size in Constants.MIN_BOARD_SIZE..Constants.MAX_BOARD_SIZE &&
                     moves in Constants.MAX_MOVES_LOWER_LIMIT..Constants.MAX_MOVES_HIGHER_LIMIT
                 ) {
-                    navController.navigate("${Route.Board}/$size/$moves")
+                    navController.navigate("${Screen.Board.route}/$size/$moves")
                 } else {
                     error = true
                 }
