@@ -8,8 +8,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lonelyistheknight.navigation.ChessNavGraph
-import com.example.lonelyistheknight.navigation.Route
+import com.example.lonelyistheknight.navigation.Screen
 import com.example.lonelyistheknight.ui.components.ChessAppBar
+import com.example.lonelyistheknight.ui.components.ChessBottomNavBar
+import com.example.lonelyistheknight.util.isAtTabRoot
 
 @Composable
 fun ChessApp() {
@@ -18,17 +20,23 @@ fun ChessApp() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val route = backStackEntry?.destination?.route
     val currentScreen = when {
-        route == Route.Start.name -> Route.Start
-        route?.startsWith(Route.Board.name) == true -> Route.Board
-        else -> Route.Start
+        route == Screen.Start.route -> Screen.Start
+        route?.startsWith(Screen.Board.route) == true -> Screen.Board
+        route == Screen.Settings.route -> Screen.Settings
+        else -> Screen.Start
     }
 
     Scaffold(
         topBar = {
             ChessAppBar(
                 currentScreen = currentScreen,
-                canNavigateBack = navController.previousBackStackEntry != null,
+                canNavigateBack = backStackEntry?.destination?.isAtTabRoot() == false,
                 navigateUp = { navController.navigateUp() }
+            )
+        },
+        bottomBar = {
+            ChessBottomNavBar(
+                navController = navController
             )
         }
     ) { innerPadding ->
