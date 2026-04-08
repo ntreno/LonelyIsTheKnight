@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.compose.runtime.android)
     kapt(libs.hilt.compiler)
     kaptAndroidTest(libs.hilt.compiler)
     kaptTest(libs.hilt.compiler)
