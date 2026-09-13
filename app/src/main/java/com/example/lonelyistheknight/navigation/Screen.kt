@@ -9,7 +9,7 @@ sealed class Screen(
 ) : AppRoute {
     object Start : Screen(
         route = "home",
-        title = R.string.app_name
+        title = R.string.home
     )
 
     object Board : Screen(

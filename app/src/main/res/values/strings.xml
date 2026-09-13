@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Lonely Is The Knight</string>
     <string name="board">Game</string>
+    <string name="home">Home</string>
     <string name="settings">Settings</string>
     <string name="back_button">Back</string>
     <string name="please_enter">Please enter board size (%1$d to %2$d) and max solution moves (%3$d to %4$d)</string>

@@ -1,5 +1,6 @@
 package com.example.lonelyistheknight.ui.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -23,6 +24,7 @@ import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.util.createBoard
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun ChessGrid(
     boardSize: Int,
