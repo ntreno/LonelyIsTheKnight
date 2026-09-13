@@ -1,7 +1,7 @@
 package com.example.lonelyistheknight.di
 
 import android.content.Context
-import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
+import com.example.lonelyistheknight.data.datastore.DatastoreManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,13 +11,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SharedPrefsModule {
+object DatastoreModule {
 
     @Provides
     @Singleton
-    fun provideSharedPrefsManager(
+    fun provideDatastoreManager(
         @ApplicationContext context: Context
-    ): SharedPrefsManager {
-        return SharedPrefsManager(context)
+    ): DatastoreManager {
+        return DatastoreManager(context)
     }
 }

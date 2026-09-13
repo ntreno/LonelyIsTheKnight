@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.lonelyistheknight.R
-import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
+import com.example.lonelyistheknight.data.datastore.DatastoreManager
 import com.example.lonelyistheknight.navigation.Screen
 import com.example.lonelyistheknight.ui.components.LastSolutionsFAB
 import com.example.lonelyistheknight.ui.components.ResultsAlertDialog
@@ -39,15 +40,15 @@ fun UserInputScreen(
     navController: NavController
 ) {
     val context = LocalContext.current
-    val sharedPrefs = remember { SharedPrefsManager(context) }
+    val datastore = remember { DatastoreManager(context) }
 
     var sizeInput by rememberSaveable { mutableStateOf("") }
     var maxMovesInput by rememberSaveable { mutableStateOf("") }
     var error by rememberSaveable { mutableStateOf(false) }
 
     var showDialog by rememberSaveable { mutableStateOf(false) }
-    val lastSolutionPaths = sharedPrefs.getSavedSolution()
-    val lastsize = sharedPrefs.getSolutionBoardSize()
+    val lastSolutionPaths by datastore.getSavedSolution().collectAsState(emptyList())
+    val lastSize by datastore.getSolutionBoardSize().collectAsState(-1)
 
     Scaffold(
         floatingActionButton = {
@@ -121,7 +122,7 @@ fun UserInputScreen(
             if (showDialog) {
                 ResultsAlertDialog(
                     lastSolutionPaths = lastSolutionPaths,
-                    lastSize = lastsize,
+                    lastSize = lastSize,
                     onDismissRequest = { showDialog = false },
                     onClick = { showDialog = false }
                 )

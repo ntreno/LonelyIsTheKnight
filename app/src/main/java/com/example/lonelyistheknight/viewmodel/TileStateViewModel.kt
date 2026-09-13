@@ -3,7 +3,7 @@ package com.example.lonelyistheknight.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lonelyistheknight.data.model.Position
-import com.example.lonelyistheknight.data.sharedPref.SharedPrefsManager
+import com.example.lonelyistheknight.data.datastore.DatastoreManager
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.util.findAllKnightPaths
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TileStateViewModel @Inject constructor(
-    private val sharedPrefs: SharedPrefsManager
+    private val datastore: DatastoreManager
 ) : ViewModel() {
     private val _isComputing = MutableStateFlow(false)
     val isComputing: StateFlow<Boolean> = _isComputing.asStateFlow()
@@ -77,7 +77,7 @@ class TileStateViewModel @Inject constructor(
                 _paths.value = result
                 _isComputing.value = false
                 if (result.isNotEmpty()) {
-                    updateSharedPrefs(
+                    updateDatastore(
                         result = result,
                         size = boardSize
                     )
@@ -106,14 +106,14 @@ class TileStateViewModel @Inject constructor(
         }
     }
 
-    private fun updateSharedPrefs(
+    private suspend fun updateDatastore(
         result: List<List<Position>>,
         size: Int
     ) {
-        sharedPrefs.clearSolution()
-        sharedPrefs.saveSolution(result)
-        sharedPrefs.clearSolutionBoardSize()
-        sharedPrefs.saveSolutionBoardSize(size)
+        datastore.clearSolution()
+        datastore.saveSolution(result)
+        datastore.clearSolutionBoardSize()
+        datastore.saveSolutionBoardSize(size)
     }
 
     fun reset() {

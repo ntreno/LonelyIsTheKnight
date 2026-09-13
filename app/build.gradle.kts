@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.core)
     kapt(libs.hilt.compiler)
     kaptAndroidTest(libs.hilt.compiler)
     kaptTest(libs.hilt.compiler)
