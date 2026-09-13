@@ -2,8 +2,8 @@ package com.example.lonelyistheknight.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.data.datastore.DatastoreManager
+import com.example.lonelyistheknight.data.model.Position
 import com.example.lonelyistheknight.util.Constants
 import com.example.lonelyistheknight.util.findAllKnightPaths
 import dagger.hilt.android.lifecycle.HiltViewModel
