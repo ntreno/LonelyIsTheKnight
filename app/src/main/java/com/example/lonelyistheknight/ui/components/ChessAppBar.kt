@@ -30,7 +30,7 @@ fun ChessAppBar(
                 style = MaterialTheme.typography.displayLarge
             )
         },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
+        colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ),
         modifier = modifier,
